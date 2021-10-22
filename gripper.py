@@ -93,8 +93,8 @@ if __name__ == "__main__":
     try:
         while True:
             gripper.openGripper()
-            time.sleep(2)
+            time.sleep(3)
             gripper.closeGripper()
-            time.sleep(2)
+            time.sleep(3)
     except KeyboardInterrupt:
         del gripper
