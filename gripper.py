@@ -55,7 +55,7 @@ class RobotisGripper():
 
 
     def closeGripper(self):
-        value = self.val(self.cls_distance)
+        value = self.val()
         dxl_comm_result, dxl_error = self.h_packet.write4ByteTxRx(self.h_port, 1, 596, value)
         if dxl_comm_result != 0 or dxl_error != 0:
             print("Failed to enable gripper: ")
@@ -74,7 +74,7 @@ class RobotisGripper():
     
     # use learned mapping from distance [mm] to serial for closing distance
     def val(self):  
-        out = self.grasp_d.prediction()
+        out = self.grasp_d.prediction(self.cls_distance)
         if out > MAX and out < MIN:
             raise ValueError("Gripper close value exceeds MIN {} and MAX {} limits".format(MIN,MAX))
         return out
