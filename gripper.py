@@ -74,7 +74,7 @@ class RobotisGripper():
     
     # use learned mapping from distance [mm] to serial for closing distance
     def val(self):  
-        out = self.grasp_d.prediction(self.cls_distance)
+        out = self.grasp_d.prediction()
         if out > MAX and out < MIN:
             raise ValueError("Gripper close value exceeds MIN {} and MAX {} limits".format(MIN,MAX))
         return out
